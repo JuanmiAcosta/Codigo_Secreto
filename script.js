@@ -24,11 +24,13 @@ var expresion_regular_3 = /.*FNC.*/;
 //El código debe contener uno de los nombre de los 5 integrantes principales de la familia Simpson
 var expresion_regular_4 = /.*Homer|Bart|Marge|Lisa|Maggie.*/;
 
+//El código debe contener el nombre del alter ego de este personaje 
+var expresion_regular_5 = /.*[pP]eter\s*[pP]arker.*/; // Con espacio en blanco opcional y case insensitive
 //---------------------------------------------
 
 //FUNCIÓN PARA FABRICAR & LIMPIAR UN ERROR
 
-function crea_error(msg) {
+function crea_error(msg, img, alt) {
 
     //Cogemos todos los div con clase error que tienen el mensaje de error que queremos borrar
     var errores = document.querySelectorAll(".error_msg");
@@ -51,6 +53,16 @@ function crea_error(msg) {
 
     div_error.appendChild(p_error);
     contenerdor.appendChild(div_error);
+
+    if (img != "") {
+        var img_error = document.createElement("img");
+        img_error.classList.add("error_img");
+        img_error.setAttribute("src", img);
+        img_error.setAttribute("alt", alt);
+
+        div_error.appendChild(img_error);
+    }
+
 }
 
 function limpia_error(msg) {
@@ -94,7 +106,7 @@ function validar_codigo(event) {
 
     } else {
 
-        crea_error("El código debe tener al menos 10 caracteres");
+        crea_error("El código debe tener al menos 10 caracteres","","");
     }
 
     if (expresion_regular_2.test(codigo_act.value)) {
@@ -103,31 +115,45 @@ function validar_codigo(event) {
 
     } else {
 
-        crea_error("El código debe comenzar por un dígito");
+        crea_error("El código debe comenzar por un dígito","","");
 
     }
 
     if (expresion_regular_3.test(codigo_act.value)) {
 
-        limpia_error("El código debe contener el equipo de esports ganador de los worlds del LOL en 2011 (formato FGT)");
+        limpia_error("El código debe contener el acrónimo equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)");
 
 
     } else {
 
-        crea_error("El código debe contener el equipo de esports ganador de los worlds del LOL en 2011 (formato FGT)");
+        crea_error("El código debe contener el acrónimo equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)","","");
 
     }
 
     if (expresion_regular_4.test(codigo_act.value)) {
 
-        limpia_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson");
+        limpia_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson (Los nombre propios comienzan con mayúscula en el castellano 😒)");
 
     } else {
 
-        crea_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson");
+        crea_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson (Los nombre propios comienzan con mayúscula en el castellano 😒)","","");
     }
 
-    if (expresion_regular_1.test(codigo_act.value) && expresion_regular_2.test(codigo_act.value) && expresion_regular_3.test(codigo_act.value) && expresion_regular_4.test(codigo_act.value)) {
+    if (expresion_regular_5.test(codigo_act.value)) {
+
+        limpia_error("El código debe contener el nombre del alter ego de este personaje (El nombre propio comienza con mayúscula en el castellano 😒)");
+
+    } else {
+
+        crea_error("El código debe contener el nombre del alter ego de este personaje (🕷️🕸️)","icon/spider-man.png","Peter Park");
+
+    }
+
+    if (expresion_regular_1.test(codigo_act.value) &&
+        expresion_regular_2.test(codigo_act.value) &&
+        expresion_regular_3.test(codigo_act.value) &&
+        expresion_regular_4.test(codigo_act.value) &&
+        expresion_regular_5.test(codigo_act.value)) {
 
         limpia_todos_errores();
         alert("Código correcto");

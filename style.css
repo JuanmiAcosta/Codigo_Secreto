@@ -57,7 +57,7 @@ label{
 }
 
 input{
-    width: 80%;
+    width: 100%;
     color: white;
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -104,6 +104,14 @@ form {
     padding:20px;
     margin:20px;
     transition: all 0.5s ease;
+}
+
+.error_img{
+    width: 50%;
+    height: auto;
+    margin: 20px;
+    border : 2px solid white;
+    border-radius: 20px;
 }
 
 .error_msg{
