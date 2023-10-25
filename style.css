@@ -15,7 +15,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    overflow: hidden;
     font-family: 'Nosifer', cursive;
     display:flex;
     flex-direction: column;
@@ -103,14 +102,15 @@ button{
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    width: 50%;
+    width: 70%;
     height: auto;
     padding:20px;
     margin:20px;
 }
 
 .error_msg{
-    font-size: 20px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
     color: white;
 }
 
