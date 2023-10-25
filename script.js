@@ -95,7 +95,6 @@ function validar_codigo(event) {
     } else {
 
         crea_error("El código debe tener al menos 10 caracteres");
-        return;
     }
 
     if (expresion_regular_2.test(codigo_act.value)) {
@@ -105,7 +104,6 @@ function validar_codigo(event) {
     } else {
 
         crea_error("El código debe comenzar por un dígito");
-        return;
 
     }
 
