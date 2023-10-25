@@ -1,0 +1,141 @@
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* ajusta la opacidad aquí */
+    z-index: -1;
+  }
+
+body {
+    background-image: url("icon/143.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow: hidden;
+    font-family: 'Nosifer', cursive;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+#container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+#titulo_input{
+    font-size: 80px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+label{
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#input {
+    width: 80%;
+    color: white;
+    margin-bottom: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+input{
+    width: 80%;
+    color: white;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+button{
+    font-size: 20px;
+    width:30%;
+    color:white;
+    margin:20px;
+    border-radius:20px;
+    height:40px;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-family: 'Nosifer', cursive;
+    transition: all 0.5s ease;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0.6);  
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    margin:20px;
+}
+
+.error {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 50%;
+    height: auto;
+    padding:20px;
+    margin:20px;
+}
+
+.error_msg{
+    font-size: 20px;
+    color: white;
+}
+
+@media (max-width: 620px) {
+    #titulo_input{
+        font-size: 30px;
+    }
+
+    label{
+        font-size: 10px;
+    }   
+    
+    button{
+        font-size: 10px;
+    }
+
+    #input {
+      width: 100%;
+    }
+  
+    .error {
+      width: 80%;
+    }
+
+    .error_msg{
+        font-size: 10px;
+    }
+  }
