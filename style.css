@@ -104,23 +104,37 @@ form {
     padding:20px;
     margin:20px;
     transition: all 0.5s ease;
+    border: 2px solid white;
 }
 
 .error_img{
-    width: 50%;
-    height: auto;
+    width: 300px;
+    height: 300px;
     margin: 20px;
     border : 2px solid white;
-    border-radius: 20px;
+    border-radius: 50%;
+}
+
+.error_h2{
+    font-size: 40px;
+    font-weight: 300;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    margin: 20px;
 }
 
 .error_msg{
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     color: white;
 }
 
 @media (max-width: 620px) {
+    .error_img{
+        width: 100px;
+        height: 100px;
+    }
+
     #titulo_input{
         font-size: 30px;
     }

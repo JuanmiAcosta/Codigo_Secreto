@@ -22,10 +22,19 @@ var expresion_regular_2 = /^[0-9]/;
 var expresion_regular_3 = /.*FNC.*/;
 
 //El código debe contener uno de los nombre de los 5 integrantes principales de la familia Simpson
-var expresion_regular_4 = /.*Homer|Bart|Marge|Lisa|Maggie.*/;
+var expresion_regular_4 = /.*[Hh]omer|[Bb]art|[Mm]arge|[Ll]isa|[Mm]aggie.*/;
 
 //El código debe contener el nombre del alter ego de este personaje 
 var expresion_regular_5 = /.*[pP]eter\s*[pP]arker.*/; // Con espacio en blanco opcional y case insensitive
+
+//El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas
+var expresion_regular_6 = /.*[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
+
+//El código ha de terminar con un teléfono con un correo inventado con el formato xxxx@correo.ugr.es
+var expresion_regular_7 = /.*[a-zA-Z0-9_-]*@[a-z]{2}|[a-z]{5}.ugr.es/;
+
+//El código ha de contener una fecha con formato dd/mm/yyyy
+var expresion_regular_8 = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/\d{4}$/;
 //---------------------------------------------
 
 //FUNCIÓN PARA FABRICAR & LIMPIAR UN ERROR
@@ -54,13 +63,23 @@ function crea_error(msg, img, alt) {
     div_error.appendChild(p_error);
     contenerdor.appendChild(div_error);
 
-    if (img != "") {
+    if (img != "" && alt != "") {
+
         var img_error = document.createElement("img");
         img_error.classList.add("error_img");
         img_error.setAttribute("src", img);
         img_error.setAttribute("alt", alt);
 
         div_error.appendChild(img_error);
+
+    }else if(img == "" && alt != ""){
+
+        var error_h2 = document.createElement("h2");
+        error_h2.classList.add("error_h2");
+        error_h2.innerHTML = alt;
+
+        div_error.appendChild(error_h2);
+
     }
 
 }
@@ -119,44 +138,78 @@ function validar_codigo(event) {
 
     }
 
+    if (expresion_regular_7.test(codigo_act.value)) {
+
+        limpia_error("El código ha de terminar con un correo inventado con el formato de la Universidad de Granada");
+
+    } else {
+
+        crea_error("El código ha de terminar con un correo inventado con el formato de la Universidad de Granada","","");
+
+    }
+
     if (expresion_regular_3.test(codigo_act.value)) {
 
-        limpia_error("El código debe contener el acrónimo equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)");
+        limpia_error("El código debe contener el acrónimo del equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)");
 
 
     } else {
 
-        crea_error("El código debe contener el acrónimo equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)","","");
+        crea_error("El código debe contener el acrónimo del equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)","","");
 
     }
 
     if (expresion_regular_4.test(codigo_act.value)) {
 
-        limpia_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson (Los nombre propios comienzan con mayúscula en el castellano 😒)");
+        limpia_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson ");
 
     } else {
 
-        crea_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson (Los nombre propios comienzan con mayúscula en el castellano 😒)","","");
+        crea_error("El código debe contener uno de los nombres de los 5 integrantes principales de la familia Simpson ","","");
     }
 
     if (expresion_regular_5.test(codigo_act.value)) {
 
-        limpia_error("El código debe contener el nombre del alter ego de este personaje (El nombre propio comienza con mayúscula en el castellano 😒)");
+        limpia_error("El código debe contener el nombre del alter ego de este personaje (🕷️🕸️)");
 
     } else {
 
-        crea_error("El código debe contener el nombre del alter ego de este personaje (🕷️🕸️)","icon/spider-man.png","Peter Park");
+        crea_error("El código debe contener el nombre del alter ego de este personaje (🕷️🕸️)","icon/spider-man.png","Peter Parker");
 
     }
+
+    if (expresion_regular_6.test(codigo_act.value)) {
+
+        limpia_error("El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas: ");
+
+    } else {
+
+        crea_error("El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas: ","","\"MC\"\"ED\"");
+    }
+
+    if (expresion_regular_8.test(codigo_act.value)) {
+
+        limpia_error("El código ha de contener una fecha con formato:");
+
+    } else {
+
+        crea_error("El código ha de contener una fecha con formato:","","\"dd/mm/yyyy\"");
+
+    }
+
 
     if (expresion_regular_1.test(codigo_act.value) &&
         expresion_regular_2.test(codigo_act.value) &&
         expresion_regular_3.test(codigo_act.value) &&
         expresion_regular_4.test(codigo_act.value) &&
-        expresion_regular_5.test(codigo_act.value)) {
+        expresion_regular_5.test(codigo_act.value) &&
+        expresion_regular_6.test(codigo_act.value) &&
+        expresion_regular_7.test(codigo_act.value) &&
+        expresion_regular_8.test(codigo_act.value)
+        ) {
 
         limpia_todos_errores();
-        alert("Código correcto");
+        setTimeout(function(){ alert("Código correcto"); }, 500);
         
     }
 
