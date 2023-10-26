@@ -18,3 +18,4 @@ El proyecto está inspirado en el juego "The Password Game". Esta aplicación es
 3. Ejecuta el proyecto
 
 ## Enlace a la página :link:
+https://effortless-sunshine-f4d770.netlify.app/
