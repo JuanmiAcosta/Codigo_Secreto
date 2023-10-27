@@ -28,7 +28,7 @@ var expresion_regular_4 = /.*[Hh]omer|[Bb]art|[Mm]arge|[Ll]isa|[Mm]aggie.*/;
 var expresion_regular_5 = /.*[pP]eter\s*[pP]arker.*/; // Con espacio en blanco opcional y case insensitive
 
 //El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas
-var expresion_regular_6 = /.*[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
+var expresion_regular_6 = /.*[eE]stupend[a|as]|[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
 
 //El código ha de terminar con un teléfono con un correo inventado con el formato xxxx@correo.ugr.es
 var expresion_regular_7 = /.*[a-zA-Z0-9_-]*@[a-z]{2}|[a-z]{5}.ugr.es/;
