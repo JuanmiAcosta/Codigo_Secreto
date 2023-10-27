@@ -30,11 +30,11 @@ var expresion_regular_5 = /.*[pP]eter\s*[pP]arker.*/; // Con espacio en blanco o
 //El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas
 var expresion_regular_6 = /.*[eE]stupend[a|as]|[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
 
-//El código ha de terminar con un teléfono con un correo inventado con el formato xxxx@correo.ugr.es
+//El código ha de terminar con un correo inventado con el formato xxxx@correo.ugr.es
 var expresion_regular_7 = /.*[a-zA-Z0-9_-]*@[a-z]{2}|[a-z]{5}.ugr.es/;
 
 //El código ha de contener una fecha con formato dd/mm/yyyy
-var expresion_regular_8 = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/\d{4}$/;
+var expresion_regular_8 = /.*([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4}).*/;
 //---------------------------------------------
 
 //FUNCIÓN PARA FABRICAR & LIMPIAR UN ERROR
