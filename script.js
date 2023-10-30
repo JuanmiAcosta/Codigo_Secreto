@@ -4,8 +4,43 @@ var contenerdor = document.getElementById("container");
 
 codigo_act.setAttribute("autocomplete", "off");
 
-//USO DE APIs PARA RECOGER INFORMACIÓN EXTERNA
+//FUNCIONES AUXILIARES
 
+function contieneMes(cadena) {
+
+    //variable que contenga el mes actual
+    var fecha = new Date();
+    var mes = fecha.getMonth();
+
+    //test
+    console.log(mes);
+    console.log(cadena);
+
+    //array con los meses del año
+    var meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+        "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+    var mes_emoji = ["⛄", "⛄", "⛄", "🌸", "🌸", "🌸", "🌞", "🌞", "🌞", "🍂", "🍂", "🍂"];
+
+    if (cadena.includes(meses[mes])) {
+        if(mes%3==0){
+            if(cadena.includes(mes_emoji[mes]) || cadena.includes(mes_emoji[mes+1])){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if(cadena.includes(mes_emoji[mes])){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }else{
+        return false;
+    }
+
+}
 
 
 //---------------------------------------------
@@ -197,6 +232,16 @@ function validar_codigo(event) {
 
     }
 
+    if (contieneMes(codigo_act.value)) {
+
+        limpia_error("El código debe contener el nombre del mes actual y su emoji representativo");
+
+    } else {
+
+        crea_error("El código debe contener el nombre del mes actual y su emoji representativo","","(⛄ || 🌸 || 🌞 || 🍂)");
+
+    }
+
 
     if (expresion_regular_1.test(codigo_act.value) &&
         expresion_regular_2.test(codigo_act.value) &&
@@ -205,7 +250,8 @@ function validar_codigo(event) {
         expresion_regular_5.test(codigo_act.value) &&
         expresion_regular_6.test(codigo_act.value) &&
         expresion_regular_7.test(codigo_act.value) &&
-        expresion_regular_8.test(codigo_act.value)
+        expresion_regular_8.test(codigo_act.value) &&
+        contieneMes(codigo_act.value)
         ) {
 
         limpia_todos_errores();
