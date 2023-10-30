@@ -183,6 +183,16 @@ function validar_codigo(event) {
 
     }
 
+    if (contieneMes(codigo_act.value)) {
+
+        limpia_error("El código debe contener el nombre del mes actual y su emoji representativo");
+
+    } else {
+
+        crea_error("El código debe contener el nombre del mes actual y su emoji representativo","","(⛄ || 🌸 || 🌞 || 🍂)");
+
+    }
+
     if (expresion_regular_3.test(codigo_act.value)) {
 
         limpia_error("El código debe contener el acrónimo del equipo de esports ganador de los worlds del LOL en 2011 (ejemplo de acrónimo: SKT)");
@@ -229,16 +239,6 @@ function validar_codigo(event) {
     } else {
 
         crea_error("El código ha de contener una fecha con formato:","","\"dd/mm/yyyy\"");
-
-    }
-
-    if (contieneMes(codigo_act.value)) {
-
-        limpia_error("El código debe contener el nombre del mes actual y su emoji representativo");
-
-    } else {
-
-        crea_error("El código debe contener el nombre del mes actual y su emoji representativo","","(⛄ || 🌸 || 🌞 || 🍂)");
 
     }
 
