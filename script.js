@@ -24,7 +24,7 @@ function contieneMes(cadena) {
 
     if (cadena.includes(meses[mes])) {
         if(mes%3==0){
-            if(cadena.includes(mes_emoji[mes]) || cadena.includes(mes_emoji[mes+1])){
+            if(cadena.includes(mes_emoji[mes]) || cadena.includes(mes_emoji[mes+1] || cadena.includes(mes_emoji[mes-1]))){
                 return true;
             }else{
                 return false;
@@ -39,6 +39,41 @@ function contieneMes(cadena) {
     }else{
         return false;
     }
+
+}
+
+function stringAnalizarFinal(){
+
+    var solucion = codigo_act.value;
+    var solucionFinal = "El código introducido contiene: \n";
+    var tipos = ["minúsculas", "mayúsculas", "números", "caracteres especiales"];
+    var contadores = [0,0,0,0];
+
+    //Analizar cada uno de los caracteres de la cadena
+
+    for(var i = 0; i < solucion.length; i++){
+        if (expresion_regular_9.test(solucion[i])) {
+            contadores[0]++;
+        
+        }else if(expresion_regular_10.test(solucion[i])){
+            contadores[1]++;
+
+        }else if(expresion_regular_11.test(solucion[i])){
+            contadores[2]++;
+
+        }else if(expresion_regular_12.test(solucion[i])){
+            contadores[3]++;
+
+        }
+    }
+
+    //Añadir al string final los resultados
+
+    for (var i = 0; i < contadores.length; i++) {
+        solucionFinal += " | " + contadores[i] + tipos[i] +" ";
+    }
+
+    return solucionFinal;
 
 }
 
@@ -63,13 +98,34 @@ var expresion_regular_4 = /.*[Hh]omer|[Bb]art|[Mm]arge|[Ll]isa|[Mm]aggie.*/;
 var expresion_regular_5 = /.*[pP]eter\s*[pP]arker.*/; // Con espacio en blanco opcional y case insensitive
 
 //El código ha de contener un adjetivo calificativo que describa una de estas dos asignaturas
-var expresion_regular_6 = /.*[eE]stupend[a|as]|[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
+var expresion_regular_6 = /.*[eE]stupend[a|as]|[Bb]uen[a|as]|[dD]ivertid[a|as]|[Mm]ejo[r|es]|[Ii]ncre[ií]bl[e|es]|[Aa]sombros[a|as]|[Ff]ant[aá]stic[a|as]|[Ii]nsuperabl[e|es]|[Mm]agnificient[e|es]|[Gg]randilocuent[e|es].*/;
 
 //El código ha de terminar con un correo inventado con el formato xxxx@correo.ugr.es
 var expresion_regular_7 = /.*[a-zA-Z0-9_-]*@[a-z]{2}|[a-z]{5}.ugr.es/;
 
 //El código ha de contener una fecha con formato dd/mm/yyyy
 var expresion_regular_8 = /.*([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4}).*/;
+
+//---------------------------------------------
+
+//EXPRESIONES REGULARES ANALIZAR SOLUCIÓN
+
+//un caracter minúscula
+
+var expresion_regular_9 = /[a-z]/;
+
+//un caracter mayúscula
+
+var expresion_regular_10 = /[A-Z]/;
+
+//un caracter número
+
+var expresion_regular_11 = /[0-9]/;
+
+//un caracter especial
+
+var expresion_regular_12 = /[^a-zA-Z0-9]/;
+
 //---------------------------------------------
 
 //FUNCIÓN PARA FABRICAR & LIMPIAR UN ERROR
@@ -255,7 +311,7 @@ function validar_codigo(event) {
         ) {
 
         limpia_todos_errores();
-        setTimeout(function(){ alert("Código correcto"); }, 500);
+        setTimeout(function(){ alert("Código correcto" + stringAnalizarFinal()); }, 500);
         
     }
 
