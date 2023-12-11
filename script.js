@@ -12,8 +12,12 @@ function contieneMes(cadena) {
     var fecha = new Date();
     var mes = fecha.getMonth();
 
+    //mes a entero
+    mes = parseInt(mes);
+
     //test
     console.log(mes);
+    console.log((mes+1)%12);
     console.log(cadena);
 
     //array con los meses del año
@@ -23,16 +27,21 @@ function contieneMes(cadena) {
     var mes_emoji = ["⛄", "⛄", "⛄", "🌸", "🌸", "🌸", "🌞", "🌞", "🌞", "🍂", "🍂", "🍂"];
 
     if (cadena.includes(meses[mes])) {
-        if(mes%3==0){
-            if(cadena.includes(mes_emoji[mes]) || cadena.includes(mes_emoji[mes+1] || cadena.includes(mes_emoji[mes-1]))){
+        console.log("mes incluido");
+        if((mes+1)%3==0){
+            if(cadena.includes(mes_emoji[mes]) || cadena.includes(mes_emoji[(mes+1)%12] || cadena.includes(mes_emoji[mes+1]))){
+                console.log("emoji incluido");
                 return true;
             }else{
+                console.log("emoji no incluido");
                 return false;
             }
         }else{
             if(cadena.includes(mes_emoji[mes])){
+                console.log("emoji incluido");
                 return true;
             }else{
+                console.log("emoji no incluido");
                 return false;
             }
         }
